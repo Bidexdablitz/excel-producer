@@ -13,6 +13,7 @@
         "next-axiom": "^1.1.1",
         "react": "^18",
         "react-dom": "^18",
+        "uninstall": "^0.0.0",
         "xlsx": "^0.18.5"
     },
     "devDependencies": {

@@ -6,15 +6,16 @@ type ResponseData = {
 };
 
 type RequestBody = {
-    file: File;
+    data: string;
 };
 export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    const body = req.body;
-    console.log("body: ", body.arrayBuffer);
-    let wb = xlsx.read(body.arrayBuffer);
-    console.log(wb.Sheets);
+    const { data }: RequestBody = req.body;
+    console.log("data: ", data);
+    console.log("atob: ", atob(data));
+    let wb = xlsx.read(data);
+    console.log("sheets: ", wb.Sheets);
     res.status(200).json({ message: "Hello from Next.js!" });
 }
