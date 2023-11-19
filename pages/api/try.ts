@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 var xlsx = require("xlsx");
 
 type ResponseData = {
-    message: string;
+    json: string;
 };
 
 type RequestBody = {
@@ -15,6 +15,7 @@ export default function handler(
     const { data }: RequestBody = req.body;
     const buffer = Buffer.from(data, "base64");
     let wb = xlsx.read(new Uint8Array(buffer));
-    console.log("sheets: ", wb.SheetNames);
-    res.status(200).json({ message: wb.SheetNames });
+    let json = xlsx.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]);
+    console.log(json);
+    res.status(200).json({ json });
 }
