@@ -9,6 +9,6 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
-    log.info("new sign-in challenge", { customerId: 32423, auth: "session" });
+    console.log("hi there");
     res.status(200).json({ message: "Hello from Next.js!" });
 }
