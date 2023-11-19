@@ -13,9 +13,10 @@ export default function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const { data }: RequestBody = req.body;
+    const buffer = Buffer.from(data, "base64");
     console.log("data: ", data);
-    console.log("atob: ", atob(data));
-    let wb = xlsx.read(data);
+    console.log("atob: ", buffer);
+    let wb = xlsx.read(new Uint8Array(buffer));
     console.log("sheets: ", wb.Sheets);
     res.status(200).json({ message: "Hello from Next.js!" });
 }
