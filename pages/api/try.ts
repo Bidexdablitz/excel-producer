@@ -15,6 +15,6 @@ export default function handler(
     const body = req.body;
     console.log("body: ", body.arrayBuffer);
     let wb = xlsx.read(body.arrayBuffer);
-
+    console.log(wb.SheetNames);
     res.status(200).json({ message: "Hello from Next.js!" });
 }
