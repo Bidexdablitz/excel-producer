@@ -3,7 +3,7 @@ import { split } from "postcss/lib/list";
 var xlsx = require("xlsx");
 
 type ResponseData = {
-    json: string;
+    json: any;
 };
 
 type RequestBody = {
@@ -27,6 +27,5 @@ export default function handler(
             });
             data.push(obj);
         });
-    let json = JSON.stringify(data);
-    res.status(200).json({ json });
+    res.status(200).json({ json: data });
 }
