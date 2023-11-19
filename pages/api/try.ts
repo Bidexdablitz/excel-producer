@@ -13,7 +13,8 @@ export default function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const body: RequestData = req.body;
-    const buffer = new Buffer(body.data, "binary");
+    const buffer = Buffer.from(body.data, "binary");
+
     let wb = xlsx.read(buffer);
     console.log(wb.SheetNames);
 
