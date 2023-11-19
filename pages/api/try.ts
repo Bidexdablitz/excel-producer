@@ -5,12 +5,11 @@ type ResponseData = {
     message: string;
 };
 
-export default async function handler(
+export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<ResponseData>
 ) {
     // let file = xlsx.read()
-    const body = JSON.parse(req.body);
-    console.log("body: ", body);
+    console.log("body: ", req.body);
     res.status(200).json({ message: "Hello from Next.js!" });
 }
