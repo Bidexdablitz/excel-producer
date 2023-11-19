@@ -14,9 +14,7 @@ export default function handler(
 ) {
     const { data }: RequestBody = req.body;
     const buffer = Buffer.from(data, "base64");
-    console.log("data: ", data);
-    console.log("atob: ", buffer);
     let wb = xlsx.read(new Uint8Array(buffer));
-    console.log("sheets: ", wb.Sheets);
+    console.log("sheets: ", wb.SheetNames);
     res.status(200).json({ message: "Hello from Next.js!" });
 }
