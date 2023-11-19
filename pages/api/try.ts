@@ -13,8 +13,8 @@ export default function handler(
     res: NextApiResponse<ResponseData>
 ) {
     const body = req.body;
-    console.log("body: ", body);
-    // let wb = xlsx.read(file.arrayBuffer);
+    console.log("body: ", body.arrayBuffer);
+    let wb = xlsx.read(body.arrayBuffer);
 
     res.status(200).json({ message: "Hello from Next.js!" });
 }
