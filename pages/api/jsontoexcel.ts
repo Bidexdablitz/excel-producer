@@ -22,6 +22,7 @@ export default function handler(
     // append the worksheet to the workbook
     xlsx.utils.book_append_sheet(wb, ws, "Sheet 1");
     // generate a bytes file to return to the user
+    console.log("Here");
     let file = xlsx.writeXLSX(wb);
 
     console.log("file: ", file);
