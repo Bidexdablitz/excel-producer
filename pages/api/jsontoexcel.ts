@@ -23,7 +23,7 @@ export default function handler(
     xlsx.utils.book_append_sheet(wb, ws, "Sheet 1");
     // generate a bytes file to return to the user
     console.log("Here");
-    let file = xlsx.writeXLSX(wb);
+    let file = xlsx.write(wb);
 
     console.log("file: ", file);
     res.status(200).json({ json: file });
