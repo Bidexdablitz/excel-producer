@@ -15,7 +15,15 @@ export default function handler(
 ) {
     let { transactions }: RequestBody = req.body;
     transactions = JSON.parse(transactions);
-    console.log(transactions);
+    // create worksheet for the transactions
+    var ws = xlsx.utils.json_to_sheet(transactions);
+    // create new workbook to store the ws
+    let wb = xlsx.utils.book_new();
+    // append the worksheet to the workbook
+    xlsx.utils.book_append_sheet(wb, ws, "Sheet 1");
+    // generate a bytes file to return to the user
+    let file = xlsx.writeXLSX(wb);
 
-    res.status(200).json({ json: "" });
+    console.log("file: ", file);
+    res.status(200).json({ json: file });
 }
