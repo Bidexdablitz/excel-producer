@@ -20,7 +20,7 @@ export default function handler(
     // create new workbook to store the ws
     let wb = xlsx.utils.book_new();
     // append the worksheet to the workbook
-    xlsx.utils.book_append_sheet(wb, ws, "Sheet 1");
+    xlsx.utils.book_append_sheet(wb, ws, "Sheet1");
     // generate a bytes file to return to the user
     let file = xlsx.write(wb, { bookType: "xlsx", type: "base64" });
     console.log(file);
