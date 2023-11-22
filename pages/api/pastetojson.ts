@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { split } from "postcss/lib/list";
 var xlsx = require("xlsx");
 
 type ResponseData = {
