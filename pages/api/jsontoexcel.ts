@@ -22,8 +22,8 @@ export default function handler(
     // append the worksheet to the workbook
     xlsx.utils.book_append_sheet(wb, ws, "Sheet 1");
     // generate a bytes file to return to the user
-    console.log("Here");
-    let file = xlsx.write(wb);
+    let file = xlsx.write(wb, { bookType: "xlsx", type: "base64" });
+    console.log(file);
 
     console.log("file: ", file);
     res.status(200).json({ json: file });
