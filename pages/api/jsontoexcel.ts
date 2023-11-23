@@ -3,6 +3,7 @@ var xlsx = require("xlsx");
 
 type ResponseData = {
     json: any;
+    columns: number;
 };
 
 type RequestBody = {
@@ -23,8 +24,9 @@ export default function handler(
     xlsx.utils.book_append_sheet(wb, ws, "Sheet1");
     // generate a bytes file to return to the user
     let file = xlsx.write(wb, { bookType: "xlsx", type: "base64" });
-    console.log(file);
 
-    console.log("file: ", file);
-    res.status(200).json({ json: file });
+    res.status(200).json({
+        json: file,
+        columns: Object.keys(transactions[0]).length,
+    });
 }
