@@ -25,9 +25,7 @@ export default function handler(
     // generate a bytes file to return to the user
     let file = xlsx.write(wb, { bookType: "xlsx", type: "base64" });
     const lenOfColumns = Object.keys(transactions[0]).length;
-    console.log("column lenght", lenOfColumns);
     let tableRange = `A1:${calcBottomRange(lenOfColumns)}${lenOfColumns}`;
-    console.log("table range is: ", tableRange);
     res.status(200).json({ json: file, tableRange });
 }
 
