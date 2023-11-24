@@ -16,7 +16,7 @@ export default function handler(
 ) {
     let { collection }: RequestBody = req.body;
     collection = JSON.parse(collection);
-    // create worksheet for the transactions
+    // create worksheet for the collection
     var ws = xlsx.utils.json_to_sheet(collection);
     // create new workbook to store the ws
     let wb = xlsx.utils.book_new();
