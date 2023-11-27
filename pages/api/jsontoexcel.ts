@@ -33,24 +33,18 @@ function calcBottomRange(numOfColumns: number) {
     // create list of alphabeth
     const alpha = Array.from(Array(27)).map((e, i) => i + 64);
     const alphabet = alpha.map((x) => String.fromCharCode(x));
-    let text = "";
 
-    return (function calculateText(number) {
-        if (number < 27) {
-            text += alphabet[number];
+    return (function calculateText(number: number): string {
+        if (number > 0 && number < 27) {
+            return alphabet[number];
         } else {
             let divided = Math.floor(number / 26);
             let remainder = number % 26;
             if (remainder === 0) {
-                if (divided > 26) calculateText(divided - 1);
-                else text += alphabet[divided - 1];
-                text += alphabet[26];
+                return calculateText(divided - 1) + alphabet[26];
             } else {
-                if (divided > 26) calculateText(divided);
-                else text += alphabet[divided];
-                text += alphabet[remainder];
+                return calculateText(divided) + alphabet[remainder];
             }
         }
-        return text;
     })(numOfColumns);
 }
